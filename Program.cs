@@ -9,9 +9,16 @@ namespace curzi.lorenzo._5h.OopCsv
         {
             Console.WriteLine("Programma OopCsv di Lorenzo Curzi 5H, 25/09/2021");
 
-            Persone listaPersone = new Persone("in.csv");
+            try
+            {
+                Persone listaPersone = new Persone("in.csv");
 
-            Console.WriteLine(listaPersone);
+                Console.WriteLine(listaPersone);
+            }
+            catch(Exception error)
+            {
+                Console.WriteLine($"Errore: {error}!");
+            }
         }
     }
 }

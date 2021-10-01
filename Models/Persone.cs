@@ -4,13 +4,8 @@ using System.Text;
 
 namespace curzi.lorenzo._5h.OopCsv.Models
 {
-    public class Persone
+    public class Persone : List<Persona>
     {
-        /// <summary>
-        /// Lista di Persona che conterrà tutte le informazioni lette dal file CSV
-        /// </summary>
-        List<Persona> _persone;
-
         /// <summary>
         /// Costruttore di default
         /// </summary>
@@ -22,17 +17,12 @@ namespace curzi.lorenzo._5h.OopCsv.Models
         /// <param name="fileName">Nome del file da leggere</param>
         public Persone(string fileName)
         {
-            //Istanzio la lista
-            _persone = new List<Persona>();
-
             StreamReader sr = new StreamReader(fileName);
 
             sr.ReadLine(); //Scarto la prima riga contenente la intestazione dei valori
 
             while(!sr.EndOfStream)
-            {
-                _persone.Add(new Persona(sr.ReadLine())); //Aggiugo alla lista le persone lette dal file
-            }
+                this.Add(new Persona(sr.ReadLine())); //Aggiugo alla lista le persone lette dal file
 
             sr.Close();
         }
@@ -45,7 +35,7 @@ namespace curzi.lorenzo._5h.OopCsv.Models
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (var p in _persone)
+            foreach (var p in this)
                 sb.AppendLine(p.ToString());
 
             return sb.ToString();
