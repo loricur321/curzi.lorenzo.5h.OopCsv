@@ -28,6 +28,42 @@ namespace curzi.lorenzo._5h.OopCsv.Models
         }
 
         /// <summary>
+        /// Metodo che consente di calcolare il costo orario di una Persona
+        /// </summary>
+        /// <param name="id">Id della persona a cui calcolare il costo totale</param>
+        public int CalcolaCosto(int id)
+        {
+            //Costo orario per ogni categoria
+            const int costoATA = 10;
+            const int costoIDT = 5;
+            const int costoITP = 150;
+
+            //Variabili in cui salverò le informazioni della persona cercata
+            string type = "";
+            int ore = 0;
+
+            foreach(var p in this)
+                if(p.ID == id)
+                {
+                    type = p.Tipo;
+                    ore = p.OreLezione;
+                }
+
+            //Una volta trovata la persona cercata calcolo il costo totale e ritorno il valore
+            switch(type)
+            {
+                case "ATA":
+                    return ore * costoATA;
+                case "IDT":
+                    return ore * costoIDT;
+                case "ITP":
+                    return ore * costoITP;
+                default: 
+                    return 0;
+            }
+        }
+
+        /// <summary>
         /// Override del metodo ToString
         /// </summary>
         /// <returns>Stringa contentente la lista di tutte le persone presenti in _persone</returns>

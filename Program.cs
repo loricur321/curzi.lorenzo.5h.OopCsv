@@ -14,6 +14,8 @@ namespace curzi.lorenzo._5h.OopCsv
                 Persone listaPersone = new Persone("in.csv");
 
                 Console.WriteLine(listaPersone);
+
+                Console.WriteLine($"Costo totale della persona con ID 0: {listaPersone.CalcolaCosto(0)}");
             }
             catch(Exception error)
             {
