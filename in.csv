@@ -1,7 +1,7 @@
-ID;Nome;Cognome;OreLezione
-0;Lorenzo;Curzi;10
-1;Liam;Bartolini;10
-2;Mattia;Bertozzi;12
-3;Christian;Bronzetti;11
-4;Francesco;Quordjia;3
-5;Mario;Rossi;4
+ID;Nome;Cognome;OreLezione;Tipo
+0;Lorenzo;Curzi;10;IDT
+1;Liam;Bartolini;10;ITP
+2;Mattia;Bertozzi;12;IDT
+3;Christian;Bronzetti;11;ITP
+4;Francesco;Quordjia;3;ATA
+5;Mario;Rossi;4;ATA

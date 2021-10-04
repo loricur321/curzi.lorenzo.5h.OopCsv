@@ -63,6 +63,29 @@ namespace curzi.lorenzo._5h.OopCsv.Models
         }
 
         /// <summary>
+        /// Field dell'attributo Tipo
+        /// </summary>
+        string _tipo;
+
+        /// <summary>
+        /// Property del field _tipo
+        /// </summary>
+        public string Tipo
+        {
+            get => _tipo;
+
+            set
+            {
+                //In caso il dato ricevuto in ingresso non sia equivalente a IDT, ITP o ATA
+                //lancio una eccezione ricordando le tre possibilità possibili
+                if(value != "IDT" && value != "ITP" && value != "ATA")
+                    throw new Exception("Il campo tipo può assumere i seguenti valori: IDT, ITP o ATA.");
+                else
+                    _tipo = value;
+            }
+        }
+
+        /// <summary>
         /// Costruttore di default
         /// </summary>
         public Persona() { }
@@ -74,12 +97,14 @@ namespace curzi.lorenzo._5h.OopCsv.Models
         /// <param name="nome">Nome della persona</param>
         /// <param name="cognome">Cognome della persona</param>
         /// <param name="oreLezione">Ore di lezione svolte dalla persona</param>
-        public Persona (int id, string nome, string cognome, int oreLezione)
+        /// <param name="tipo">Ruolo assunto dalla persona</param>
+        public Persona (int id, string nome, string cognome, int oreLezione, string tipo)
         {
             ID = id;
             Nome = nome;
             Cognome = cognome;
             OreLezione = oreLezione;
+            Tipo = tipo;
         }
 
         /// <summary>
@@ -106,6 +131,8 @@ namespace curzi.lorenzo._5h.OopCsv.Models
                 OreLezione = result;
             else
                 throw new Exception("Il valore del campo OreLezione deve essere un numero compreso tra 0 e 60.");
+
+            Tipo = splittedLine[4];
         }
 
         /// <summary>
@@ -120,6 +147,7 @@ namespace curzi.lorenzo._5h.OopCsv.Models
             sb.AppendLine($"Nome:\t\t{Nome}");
             sb.AppendLine($"Cognome:\t{Cognome}");
             sb.AppendLine($"Ore Lezione:\t{OreLezione}");
+            sb.AppendLine($"Tipo:\t\t{Tipo}");
 
             return sb.ToString();
         }
